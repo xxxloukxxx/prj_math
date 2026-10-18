@@ -1,0 +1,445 @@
+\chapter{Probabilités}
+
+\section{Vocabulaire et fondamentaux}
+
+\def\manote{La notion d'expérience aléatoire apparaît avec les premiers travaux sur les jeux de hasard au XVII\up{e} siècle.
+
+	\noindent En 1654, les mathématiciens français \textbf{Blaise Pascal} et \textbf{Pierre de Fermat} échangent des lettres pour résoudre des problèmes liés aux dés et aux jeux d'argent.
+
+	\noindent Ces travaux marquent la naissance de la théorie des probabilités. Plus tard, la notion d'univers $\Omega$ permettra de décrire rigoureusement l'ensemble de toutes les issues possibles d'une expérience aléatoire.}
+
+\definition
+
+Une \textbf{expérience aléatoire}\sidenote{\manote} est une expérience dont les \textbf{issues} sont connues sans que l'on puisse prédire laquelle se produira.
+
+L'ensemble de toutes les \textbf{issues} possibles est appelé l'\textbf{univers}, noté $\Omega$.
+
+\ex
+
+On lance un dé à six faces et on note la face du dessus.
+
+Les issues possibles sont : $\Omega = \{\dice{1},\dice{2},\dice{3},\dice{4},\dice{5},\dice{6}\}$
+
+\definition
+
+Un \textbf{événement} est un sous-ensemble de $\Omega$.
+
+\begin{itemize}
+	\item Un événement contenant une seule issue est un \textbf{événement élémentaire}.
+	\item L'ensemble vide $\varnothing$ est l'\textbf{événement impossible}.
+	\item L'ensemble $\Omega$ est l'\textbf{événement certain}.
+\end{itemize}
+
+\ex
+
+On lance un dé à six faces\sidenote{\cimg{3cm}{./img/proba/de.png}} et on note la face du dessus.
+
+On lance un dé à 6 faces. $\Omega = \{\dice{1},\dice{2},\dice{3},\dice{4},\dice{5},\dice{6}\}$.
+
+L'événement $A$: "obtenir un chiffre supérieur ou égal à 5" est :
+
+$$A = \{\dice{5}, \dice{6}\}$$
+
+\ex
+
+On choisit au hasard une lettre parmi les voyelles suivantes :
+
+$$\Omega = \{A,E,I,O,U,Y\}$$
+
+\begin{itemize}
+	\item L'événement $A = \{A,E\}$ signifie : \og obtenir la lettre A ou E \fg.
+	\item L'événement $B = \{I\}$ est un \textbf{événement élémentaire}.
+	\item L'événement $\varnothing$ est l'\textbf{événement impossible}.
+	\item L'événement $\Omega = \{A,E,I,O,U,Y\}$ est l'\textbf{événement certain}.
+\end{itemize}
+
+\section{Loi de probabilité et équiprobabilité}
+
+\definition
+
+Définir une \textbf{loi de probabilité} sur $\Omega = \{e_1, e_2, \dots, e_n\}$, c'est associer à chaque issue $e_i$ un nombre $p_i$ tel que :
+
+\begin{enumerate}
+	\item Pour tout $i$, $0 \le p_i \le 1$
+	\item $\sum\limits_{i=1}^{n} p_i = p_1 + p_2 + \dots + p_n = 1$
+\end{enumerate}
+
+\ex
+
+\def\urne{\null\\ \begin{tikzpicture}
+		\draw[thick] (-2,1) arc (180:360:2 and 0.8);
+		\draw[thick] (-2,1) -- (-1.6,4);
+		\draw[thick] (2,1) -- (1.6,4);
+		\fill[rougeClair] (0,3.2) circle (0.41);
+		\node at (0,3.2) {\small\textbf{R}};
+		\fill[ciel] (-0.8,2.3) circle (0.41);
+		\node[text=black] at (-0.8,2.3) {\small\textbf{B}};
+		\fill[ciel] (0.9,2.1) circle (0.41);
+		\node[text=black] at (0.9,2.1) {\small\textbf{B}};
+		\fill[menthe] (-1.0,1.1) circle (0.41);
+		\node[text=black] at (-1.0,1.1) {\small\textbf{V}};
+		\fill[menthe] (0,1.3) circle (0.41);
+		\node[text=black] at (0,1.3) {\small\textbf{V}};
+		\fill[menthe] (1.0,1.0) circle (0.41);
+		\node[text=black] at (1.0,1.0) {\small\textbf{V}};
+	\end{tikzpicture}
+}
+
+Une urne\sidenote{\urne} contient des boules de différentes couleurs :
+
+\begin{itemize}
+	\item $1$ boule \textbf{R}ouge
+	\item $2$ boules \textbf{B}leues
+	\item $3$ boules \textbf{V}ertes
+\end{itemize}
+
+On tire une boule au hasard et on note sa couleur.
+
+L'univers est : $\Omega = \{R,B,V\}$
+
+La loi de probabilité de cette expérience aléatoire est donnée par :
+
+$$
+	\def\arraystretch{1.5}
+	\begin{array}{|>{\columncolor{ciel}}c|c|c|c|} \hline
+		e_i                       & \, R\,       & \, B\,       & \, V\,       \\ \hline
+		\rule[-4mm]{0mm}{11mm}p_i & \dfrac{1}{6} & \dfrac{2}{6} & \dfrac{3}{6} \\ \hline
+	\end{array}
+$$
+
+On a : $p_1 + p_2 + p_3 = \dfrac{1}{6} + \dfrac{2}{6} + \dfrac{3}{6} = 1$
+\prop
+
+La probabilité d'un événement $A$, notée $P(A)$, est la somme des probabilités des issues qui le composent.
+
+\medskip
+
+\ex
+
+On place dans une urne les lettres du mot \texttt{BANANE} et on tire une lettre au hasard.
+
+\begin{marginfigure}\cimg{4cm}{./img/proba/banane.png}\end{marginfigure}
+
+On a $\Omega = \{A\,;\,B\,;\,E\,;\,N\}$ et la loi de probabilité suivante :
+
+$$
+	\def\arraystretch{1.5}
+	\begin{array}{|>{\columncolor{ciel}}c|c|c|c|c|} \hline
+		e_i                       & \, A\,       & \, B\,       & \, E\,       & \, N\,       \\ \hline
+		\rule[-4mm]{0mm}{11mm}p_i & \dfrac{2}{6} & \dfrac{1}{6} & \dfrac{1}{6} & \dfrac{2}{6} \\ \hline
+	\end{array}
+$$
+
+Soit l'événement $C = \text{\og tirer une lettre du mot \texttt{ANE}\fg}$
+
+Les issues favorables sont $\{A\,;\,N\,;\,E\}$
+
+Donc, on a :
+
+$$
+	\def\arraystretch{1.5}
+	\begin{array}{rccccccc}
+		P(C) & = & P(\text{\og A\fg}) & + & P(\text{\og N\fg}) & + & P(\text{\og E \fg}) &               \\
+		     & = & \dfrac{2}{6}       & + & \dfrac{2}{6}       & + & \dfrac{1}{6}        & =\dfrac{5}{6} \\
+	\end{array}
+$$
+
+\definition
+
+Le \textbf{cardinal} d'un ensemble est le nombre d'éléments qu'il contient.
+
+On le note $\card{E}$.
+
+\ex
+
+Soit $E=\{a,b,c,d\}$. On a $\card{E}=4$
+
+Cela signifie que l'ensemble $E$ contient $4$ éléments.
+
+\prop [Équiprobabilité]
+
+Si toutes les issues ont la même probabilité de se réaliser, on dit qu'il y a \textbf{équiprobabilité}. Alors :
+$$ P(A) = \frac{\text{Nombre d'issues de } A}{\text{Nombre d'issues de } \Omega} = \frac{\card{A}}{\card{\Omega}} $$
+
+\rem
+
+Dans les exercices, les expressions "dé équilibré", "pièce non truquée" ou "tirage au hasard" indiquent une situation d'équiprobabilité.
+
+\ex [Tirage d'une lettre]
+
+On choisit au hasard une lettre de l'alphabet.
+
+L'univers est $\Omega=\{A,B,C,\dots,Z\}$
+
+\begin{marginfigure}\cimg{5cm}{img/proba/alphabet.png}\end{marginfigure}
+
+Il y a donc $\card{\Omega}=26$
+
+On considère l'événement : $A=\text{\og obtenir une voyelle\fg}$
+
+Les voyelles sont $A=\{A,E,I,O,U,Y\}$
+
+Ainsi $\card{A}=6$
+
+Comme toutes les lettres ont la même probabilité d'être choisies :
+
+$$P(A) = \dfrac{\card{A}}{\card{\Omega}}\qquad = \dfrac{6}{26}\qquad = \dfrac{3}{13}$$
+
+
+\ex [Choix d'un élève]
+
+Dans une classe, on choisit un élève au hasard dont la répartition est donnée dans le tableau à double entrées ci-dessous.
+
+$$
+	\def\arraystretch{1.5}
+	\begin{array}{|c|c|c|c|} \hline
+		                                    & \cellcolor{grisLeger}\text{Cheveux longs} & \cellcolor{grisLeger}\text{Cheveux courts} & \cellcolor{grisLeger}\text{Total} \\ \hline
+		\cellcolor{grisLeger}\text{Filles}  & 8                                         & 4                                          & 12                                \\ \hline
+		\cellcolor{grisLeger}\text{Garçons} & 3                                         & 15                                         & 18                                \\ \hline
+		\cellcolor{grisLeger}\text{Total}   & 11                                        & 19                                         & 30                                \\ \hline
+	\end{array}
+$$
+
+\ms
+
+On considère les événements :
+
+\begin{itemize}
+	\item $A=\text{\og l'élève a les cheveux longs\fg}$
+	\item $B=\text{\og l'élève choisi est un garçon\fg}$
+\end{itemize}
+
+Il y a $\card{A}=11$, $\card{B}=18$ et $\card{\Omega}=30$
+
+Donc :
+
+$$
+	\begin{array}{cc|cc}
+		\def\arraystretch{1.7}
+		\begin{array}{rcc}
+			P(A) & = & \dfrac{\card{A}}{\card{\Omega}} \\
+			     & = & \dfrac{11}{30}
+		\end{array}
+		 & \null & \null &
+		\def\arraystretch{1.7}
+		\begin{array}{rccc}
+			P(B) & = & \dfrac{\card{B}}{\card{\Omega}} &               \\
+			     & = & \dfrac{18}{30}                  & =\dfrac{3}{5}
+		\end{array}
+	\end{array}
+$$
+
+\newpage
+
+\section{Opérations sur les événements}
+
+\def\manote{Les notations $\cap$ et $\cup$ proviennent de la théorie des ensembles. Ces notations ont été popularisées au début du XX\up{e} siècle par les mathématiciens comme Georg Cantor.}
+
+\definition\sidenote{\manote}
+
+Soient $A$ et $B$ deux événements.
+
+\begin{enumerate}
+	\item L'événement \textbf{contraire} de $A$, noté $\bar{A}$, est l'ensemble des issues de $\Omega$ qui ne sont pas dans $A$.
+	\item L'événement \textbf{intersection} $A \cap B$ est constitué des issues appartenant à la fois à $A$ \textbf{et} à $B$.
+	\item L'événement \textbf{réunion} $A \cup B$ est constitué des issues appartenant à $A$ \textbf{ou} à $B$ (au moins l'un des deux).
+\end{enumerate}
+
+\ex
+
+Dans une classe, on choisit un élève au hasard.
+
+\begin{marginfigure}
+	\vspace{2cm}
+	$\def\arraystretch{2.3}
+		\begin{array}{|c|c|c|c|} \hline
+			                                    & \cellcolor{grisLeger}\shortstack{Cheveux           \\longs} & \cellcolor{grisLeger}\shortstack{Cheveux\\courts} & \cellcolor{grisLeger}\text{Total} \\ \hline
+			\cellcolor{grisLeger}\text{Filles}  & 8                                        & 4  & 12 \\ \hline
+			\cellcolor{grisLeger}\text{Garçons} & 3                                        & 15 & 18 \\ \hline
+			\cellcolor{grisLeger}\text{Total}   & 11                                       & 19 & 30 \\ \hline
+		\end{array}$
+\end{marginfigure}
+
+On considère les événements :
+
+\begin{itemize}
+	\item $A:\text{\og l'élève choisi est un garçon\fg}$
+	\item $B:\text{\og l'élève choisi a les cheveux longs\fg}$
+\end{itemize}
+
+\ms
+
+D'après les définitions ci-dessus, on a :
+\begin{enumerate}
+	\item L'événement contraire de $A$ est :\\
+	      $$\def\arraystretch{1.5}
+		      \begin{array}{rcl}
+			      \bar{A} & =        & \text{\og l'élève choisi est une fille\fg} \\
+			              & \implies & P\pa{\bar{A}}=\dfrac{12}{30}
+		      \end{array}$$
+	\item L'intersection $A\cap B$ est :\\
+	      $$\def\arraystretch{1.5}
+		      \begin{array}{rcl}
+			      A\cap B & =        & \text{\og l'élève choisi est un garçon \textbf{et} a les cheveux longs\fg} \\
+			              & \implies & P(A\cap B)=\dfrac{3}{30}$$
+		      \end{array}$$
+	\item La réunion $A\cup B$ est :\\
+	      $$\def\arraystretch{1.5}
+		      \begin{array}{rcl}
+			      A\cup B & =        & \text{\og l'élève choisi est un garçon \textbf{ou} a les cheveux longs\fg} \\
+			              & \implies & P(A\cup B)=\dfrac{3+15+8}{30}=\dfrac{26}{30}$$
+		      \end{array}$$
+	      Cela signifie que l'élève vérifie \textbf{au moins une} des deux conditions.
+\end{enumerate}
+
+\prop
+
+Pour tous événements $A$ et $B$ :
+
+\begin{itemize}
+	\item $P(\bar{A}) = 1 - P(A)$
+	\item $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+\end{itemize}
+
+\ex [Festival de musique]
+
+Lors d'un festival, on interroge un participant au hasard. On considère les événements :
+
+\begin{itemize}
+	\item $A=\text{\og la personne aime le rock\fg}$
+	\item $B=\text{\og la personne aime le rap\fg}$
+\end{itemize}
+
+Une enquête donne les résultats suivants :
+
+\begin{itemize}
+	\item $P(A)=0{,}6$
+	\item $P(B)=0{,}5$
+	\item $P(A\cap B)=0{,}2$
+\end{itemize}
+
+\ms
+
+D'après cet énoncé, on a :
+
+\begin{enumerate}
+	\item La probabilité qu'une personne \textbf{n'aime pas le rock} est :\\
+	      $$\begin{array}{rcll}
+			      P(\bar{A}) & = & 1-P(A)  &        \\
+			                 & = & 1-0{,}6 & =0{,}4
+		      \end{array}$$
+	\item La probabilité qu'une personne aime le rock \textbf{ou} le rap est :\\
+	      $$\begin{array}{rcll}
+			      P(A\cup B) & = & P(A)+P(B)-P(A\cap B) &          \\
+			                 & = & 0{,}6+0{,}5-0{,}2    & =  0{,}9
+		      \end{array}$$
+\end{enumerate}
+
+Ainsi, $90\,\%$ des participants aiment au moins l'un des deux styles musicaux.
+
+
+\definition
+
+Deux événements $A$ et $B$ sont dits \textbf{incompatibles} si $A \cap B = \varnothing$. Dans ce cas, $P(A \cup B) = P(A) + P(B)$.
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.5]
+		\draw[thick] (0,0) rectangle (8,5);
+		\node at (7.6,4.6) {$\Omega$};
+		\fill[blue!30] (2.2,2.5) circle (1.2);
+		\draw[thick] (2.2,2.5) circle (1.2);
+		\node at (2.2,2.5) {$A$};
+		\fill[red!30] (5.8,2.5) circle (1.2);
+		\draw[thick] (5.8,2.5) circle (1.2);
+		\node at (5.8,2.5) {$B$};
+		\node at (4,-0.6) {$A \cap B = \varnothing$};
+	\end{tikzpicture}
+\end{center}
+
+\ex [Exemple d'événements incompatibles]
+
+On lance un dé équilibré à six faces.
+
+\begin{itemize}
+	\item $A$ : \og obtenir un nombre pair \fg
+	\item $B$ : \og obtenir le nombre $3$ \fg
+\end{itemize}
+
+Alors : $A=\{\dice{2},\dice{4},\dice{6}\}, \qquad B=\{\dice{3}\}$
+
+Comme aucun résultat n'appartient à la fois à $A$ et à $B$, on a : $$A\cap B=\varnothing$$
+
+Les événements $A$ et $B$ sont donc incompatibles.
+
+De plus, $P(A)=\dfrac{3}{6}$ et $P(B)=\dfrac{1}{6}$ et $P(A\cup B)\quad=\dfrac{3}{6}+\dfrac{1}{6}\quad =\dfrac{4}{6} $
+
+\vspace{0.8cm}
+
+\begin{center}
+	\begin{tikzpicture}[scale=1]
+
+		% Univers
+		\draw[thick] (0,0) rectangle (8,4);
+		\node at (7.6,3.6) {$\Omega$};
+
+		% Ensemble A
+		\fill[blue!25] (2.3,2) circle (1);
+		\draw[thick] (2.3,2) circle (1);
+		\node at (2.3,2) {$A$};
+
+		% Ensemble B
+		\fill[red!25] (5.7,2) circle (1);
+		\draw[thick] (5.7,2) circle (1);
+		\node at (5.7,2) {$B$};
+
+		% Texte
+		\node at (4,-0.5) {$A\cap B=\varnothing$};
+
+	\end{tikzpicture}
+\end{center}
+
+
+%TODO: j'en suis là
+
+\section{Représentations graphiques}
+
+\subsection{Diagrammes de Venn}
+
+Les diagrammes de Venn permettent de visualiser les ensembles.
+
+% Illustration TikZ : Diagramme de Venn
+\begin{center}
+	\begin{tikzpicture}[scale=1.2]
+		\draw (0,0) rectangle (5,4) node[below left] {$\Omega$};
+		\draw (1.8,2) circle (1.2) node[left] {$A$};
+		\draw (3.2,2) circle (1.2) node[right] {$B$};
+		\node at (2.5,2) {$A \cap B$};
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Tableaux à double entrée}
+
+Indispensables pour les expériences à deux critères (ex: une population avec genre et fumeur/non-fumeur).
+
+\subsection{Arbres de dénombrement}
+
+Utiles pour les expériences répétées ou à étapes successives.
+
+% Illustration TikZ : Arbre simple
+\begin{center}
+	\begin{tikzpicture}[level distance=2cm,
+			level 1/.style={sibling distance=3cm},
+			level 2/.style={sibling distance=1.5cm}]
+		\node {}
+		child {node {$A$}
+				child {node {$B$} edge from parent node[left] {$P(A \cap B)$}}
+				child {node {$\bar{B}$}}
+				edge from parent node[above left] {$P(A)$}
+			}
+		child {node {$\bar{A}$}
+				child {node {$B$}}
+				child {node {$\bar{B}$}}
+				edge from parent node[above right] {$P(\bar{A})$}
+			};
+	\end{tikzpicture}
+\end{center}

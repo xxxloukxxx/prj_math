@@ -1,0 +1,45 @@
+:%s/^#/##/g
+:g/cimg/norm /{img\/wyi}o![](jkpA =350x center)
+:%s/lim\\limits/limite/g
+:%s/\\ms//g
+:%s/\\faLightbulbO/:bulb:/g
+:%s/\\frac/\\cfrac/g
+:%s/\\dfrac/\\cfrac/g
+:%s/^\\correction/---/g
+:%s/^\\definition/---- admo def/g
+:%s/^\\exemple/---- admo ex/g
+:%s/^\\methode/---- admo meth/g
+:g/meth \\ul/norm tuxxxcs}"ititle="Méthode : jklx
+:%s/^\\rem/---- admo rem/g
+:%s/^\\prop/---- admo prop/g
+:%s/^\\theoreme/---- admo th/g
+:%s/^\\demo/---- admo demo/g
+:g/arraystretch/d
+:g/\\newpage/d
+:g/\\ms/d
+:%s/\$\~\$//g
+:%s/\$\\quad\$//g
+:%s/\~/\\ /g
+:%s/\\\\/\\\\\\\\/g
+:%s/Lrarr/iff/g
+:%s/less/lt/g
+:%s/\\mathbb{R}/\\R/g
+:%s/^\\vspace{...}//g
+:%s/Leftrightarrow/iff/g
+:%s/\\left\\{/\\brace{/g 
+:%s/\\right\\}/}/g 
+:%s/\\text{\\euro{}}/\\euro/g
+:%s/\\brac{/\\brace{/g
+:%s/\\ul{/**/g
+:%s/^>//g
+:%s/epsdice{1}/diceone/g
+:%s/epsdice{2}/dicetwo/g
+:%s/epsdice{3}/dicethree/g
+:%s/epsdice{4}/dicefour/g
+:%s/epsdice{5}/dicefive/g
+:%s/epsdice{6}/dicesix/g
+:g/---- admo/norm O---- eadmo
+:g/\\cimg/d
+:Autoformat
+:Neoformat
+:w
